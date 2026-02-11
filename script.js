@@ -1,3 +1,17 @@
+window.handleRegistration = function() {
+    userData = {
+        name: document.getElementById('reg-name').value,
+        company: document.getElementById('reg-company').value,
+        role: document.getElementById('reg-role').value,
+        email: document.getElementById('reg-email').value
+    };
+
+    if(!userData.name || !userData.email) {
+        alert("Please provide at least a name and email.");
+        return;
+    }
+    startGame(); // This will now call your existing startGame function
+};
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz0CZBIqFlmBkGIZoU6yVFDak_B4FhkqnvnEUl7ZILjOVWq9-5htipRMk_zeqWZ_ZOoyg/exec";
 
 const products = [
@@ -144,4 +158,5 @@ function loadLeaderboard() {
 
 // Global exposure
 window.handleRegistration = handleRegistration;
+
 window.handleSwipe = handleSwipe;
