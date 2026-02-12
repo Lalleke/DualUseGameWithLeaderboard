@@ -18,14 +18,33 @@
         
         /* Slider Overlay */
         #slider-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        #slider-img { max-width: 100%; max-height: 90vh; object-fit: contain; }
-        .close-slider { position: absolute; top: 20px; right: 20px; background: #86bc25; color: #000; padding: 10px 20px; font-weight: bold; cursor: pointer; border: none; }
+        #slider-img { max-width: 100%; max-height: 95vh; object-fit: contain; }
+        
+        /* Updated Close Button Styling */
+        .close-slider { 
+            position: absolute; 
+            top: 15px; 
+            right: 15px; 
+            background: rgba(255, 255, 255, 0.2); 
+            color: #fff; 
+            width: 35px; 
+            height: 35px; 
+            border-radius: 50%;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer; 
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 110;
+        }
+        .close-slider:hover { background: #86bc25; color: #000; }
     </style>
 </head>
 <body>
 
 <div id="slider-overlay" class="hidden">
-    <button class="close-slider" onclick="toggleSlider()">CLOSE [X]</button>
+    <div class="close-slider" onclick="toggleSlider()">×</div>
     <img src="images/oneslider.png" id="slider-img" alt="Information Slide">
 </div>
 
@@ -42,7 +61,11 @@
         <input type="email" id="reg-email" placeholder="Email Address">
         <button id="main-start-btn">START GAME</button>
         <button class="secondary-btn" onclick="toggleSlider()">Show Info Slide</button>
-        <p style="margin-top:15px;"><a href="leaderboard.html" style="color:#86bc25; text-decoration:none; font-size:0.8rem;">View Leaderboard</a></p>
+        <p style="margin-top:20px;">
+            <a href="leaderboard.html" style="color:#86bc25; text-decoration:none; font-size:0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <span>🏆</span> View Leaderboard
+            </a>
+        </p>
     </div>
 
     <div id="game-content" class="hidden">
@@ -152,7 +175,7 @@
         if (guess === products[currentIndex].isDualUse) {
             score++;
         } else {
-            score--; // Penalty: -1 for wrong answers
+            score--; 
         }
         document.getElementById('score-display').innerText = `Score: ${score}`;
         currentIndex++;
